@@ -14,4 +14,5 @@ My neovim / vim configuration
 </pre>
 
 ## Post installation
-type : : PlugInstall in vim
+* :PlugInstall in vim
+* install patched font for [airline](https://github.com/vim-airline/vim-airline)
