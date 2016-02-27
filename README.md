@@ -1,17 +1,12 @@
-My neovim / vim configuration
+My neovim configuration
 =============================
 
 ## Installation (neovim)
 <pre>
-  rm ~/config/nvim
+  rm ~/.config/nvim -rf
   git clone git@github.com:ArthurSonzogni/neovim-configuration.git ~/config/nvim
 </pre>
 
-## Installation (vim)
-<pre>
-  rm ~/.vim
-  git clone git@github.com:ArthurSonzogni/neovim-configuration.git ~/.vim
-</pre>
 
 ## Post installation
 * :PlugInstall in vim
