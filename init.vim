@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
 
     " snippet completion
     Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'vim-scripts/tlib'
     Plug 'garbas/vim-snipmate'
 
     " multiple cursors
