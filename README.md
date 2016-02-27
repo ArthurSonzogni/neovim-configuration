@@ -4,7 +4,7 @@ My neovim configuration
 ## Installation (neovim)
 <pre>
   rm ~/.config/nvim -rf
-  git clone git@github.com:ArthurSonzogni/neovim-configuration.git ~/config/nvim
+  git clone git@github.com:ArthurSonzogni/neovim-configuration.git ~/.config/nvim
 </pre>
 
 
