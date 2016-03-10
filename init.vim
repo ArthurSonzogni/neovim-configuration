@@ -25,12 +25,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'vim-scripts/tlib'
     Plug 'garbas/vim-snipmate'
+    Plug 'honza/vim-snippets'
 
     " multiple cursors
     Plug 'terryma/vim-multiple-cursors'
 
     " beautiful theme
-    Plug 'crusoexia/vim-monokai'
+    Plug 'flazz/vim-colorschemes'
 
     " syntax highlighting
     Plug 'sheerun/vim-polyglot'
@@ -53,6 +54,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" The same command when entering in terminal 
+tnoremap <C-j> <C-\><C-n><C-w>h
+tnoremap <C-k> <C-\><C-n><C-w>j
+tnoremap <C-h> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+
 " don't use arrow key in normal mode
 noremap <Up> <nop>
 noremap <Down> <nop>
@@ -67,9 +74,6 @@ map <C-d> :NERDTreeToggle<CR>
 " :
 """""""""""""""""""""""""""""""""""
 
-" disable vi strange default
-set nocompatible
-
 " enable filetype plugin
 if has('autocmd')
   filetype plugin indent on
@@ -81,11 +85,7 @@ if has('syntax')
 endif
 
 " theme
-colorscheme monokai
-
-" inden on new line
-set autoindent
-
+colorscheme molokai
 
 "highline curent line number
 set cursorline
@@ -95,16 +95,8 @@ set nobackup
 set nowb
 set noswapfile
 
-
-" activate mouse control
-set mouse=a
-
-
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
-
-" Turn on the WiLd menu
-set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~
@@ -115,12 +107,6 @@ set ruler
 " don't annoy with case
 set ignorecase
 set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
 
 " For regular expressions turn magic on
 set magic
@@ -138,16 +124,10 @@ set number
 " always show status line
 set laststatus=2
 
-" setmart when using tabs ;)
-set smarttab
-
 " 1 tab == 2 spaces
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-" Automaticly reload unmodified file
-set autoread
 
 " define scroll margin
 set scrolloff=8
