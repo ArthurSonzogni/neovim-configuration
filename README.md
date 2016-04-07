@@ -9,5 +9,5 @@ My neovim configuration
 
 
 ## Post installation
-* :PlugInstall in vim
+* :PlugInstall in nvim
 * install patched font for [airline](https://github.com/vim-airline/vim-airline)
