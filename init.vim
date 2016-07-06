@@ -38,6 +38,9 @@ call plug#begin('~/.vim/plugged')
 
     " align element
     Plug 'godlygeek/tabular'
+    
+    " ctrl-p goto everywhere
+    Plug 'kien/ctrlp.vim'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""
