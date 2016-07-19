@@ -41,6 +41,12 @@ call plug#begin('~/.vim/plugged')
     
     " ctrl-p goto everywhere
     Plug 'kien/ctrlp.vim'
+
+    " google indent
+    Plug 'google/vim-maktaba'
+    Plug 'google/vim-codefmt'
+    Plug 'google/vim-glaive'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""
@@ -87,8 +93,10 @@ if has('syntax')
     syntax enable
 endif
 
+call glaive#Install()
+
 " theme
-colorscheme molokai
+silent! colorscheme molokai
 
 "highline curent line number
 set cursorline
@@ -142,4 +150,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " airline symbols
 let g:airline_powerline_fonts = 1
+
+
+" custom file listing command
+let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'        " MacOSX/Linux
 
