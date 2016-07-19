@@ -8,6 +8,5 @@ My neovim configuration
 </pre>
 
 
-## Post installation
-* :PlugInstall in nvim
+## Post installation (optional)
 * install patched font for [airline](https://github.com/vim-airline/vim-airline)
