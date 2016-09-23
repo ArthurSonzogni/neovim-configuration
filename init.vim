@@ -57,6 +57,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'google/vim-codefmt'
     Plug 'google/vim-glaive'
 
+    " Codi, python interactive scratchpad
+    " :Codi to enable it
+    Plug 'metakirby5/codi.vim'
+
+
 call plug#end()
 
 silent! call glaive#Install()
