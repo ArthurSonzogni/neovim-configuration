@@ -61,7 +61,6 @@ call plug#begin('~/.vim/plugged')
     " :Codi to enable it
     Plug 'metakirby5/codi.vim'
 
-
 call plug#end()
 
 silent! call glaive#Install()
@@ -70,7 +69,7 @@ silent! call glaive#Install()
 " Key mapping
 " :
 """""""""""""""""""""""""""""""""""
-" visual shifting (can repeat shifting
+" visual shifting (can repeat shifting)
 vnoremap < <gv
 vnoremap > >gv
 
@@ -167,7 +166,6 @@ let g:airline#extensions#tabline#enabled = 1
 " airline symbols
 let g:airline_powerline_fonts = 1
 
-
 " custom file listing command
-let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'        " MacOSX/Linux
+let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'
 
