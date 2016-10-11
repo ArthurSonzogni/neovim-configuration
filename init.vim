@@ -1,24 +1,20 @@
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 " Author: Arthur Sonzogni
-" :
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 " Automaticly load pluings
-" :
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 " Plugins
-" :
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 call plug#begin('~/.vim/plugged')
-    "
     " file explorer
     Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 
@@ -61,14 +57,17 @@ call plug#begin('~/.vim/plugged')
     " :Codi to enable it
     Plug 'metakirby5/codi.vim'
 
+    " undotree vizualizer
+    " use ctrl-f
+    Plug 'mbbill/undotree'
+
 call plug#end()
 
 silent! call glaive#Install()
 
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 " Key mapping
-" :
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 " visual shifting (can repeat shifting)
 vnoremap < <gv
 vnoremap > >gv
@@ -94,10 +93,12 @@ noremap <Right> <nop>
 " map nerdtree button (feel free to change)
 map <C-d> :NERDTreeToggle<CR>
 
-"""""""""""""""""""""""""""""""""""
+" map undotree button (feel free to change)
+map <C-f> :UndotreeToggle<cr>
+
+"----------------------------------
 " configuration
-" :
-"""""""""""""""""""""""""""""""""""
+"----------------------------------
 
 " enable filetype plugin
 if has('autocmd')
@@ -109,11 +110,13 @@ if has('syntax')
     syntax enable
 endif
 
-
 " theme
 silent! colorscheme molokai
 
-"highline curent line number
+" hightlight the 80th column
+set colorcolumn=80
+
+" highline curent line number
 set cursorline
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
