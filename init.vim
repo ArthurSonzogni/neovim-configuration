@@ -61,6 +61,9 @@ call plug#begin('~/.vim/plugged')
     " use ctrl-f
     Plug 'mbbill/undotree'
 
+    " You complete me
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
 call plug#end()
 
 silent! call glaive#Install()
