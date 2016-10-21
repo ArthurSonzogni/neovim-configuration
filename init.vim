@@ -30,40 +30,41 @@ endif
 " Plugins
 "----------------------------------
 call plug#begin('~/.vim/plugged')
-    " file explorer
+
+    " File explorer
     Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 
-     "toogle comment with <leader-c-space>
+    " Toogle comment with <leader-c-space>
     Plug 'scrooloose/nerdcommenter'
 
-    " alternate header/implementation :A
+    " Alternate header/implementation :A
     Plug 'vim-scripts/a.vim'
 
-    " beautiful status lines
+    " Beautiful status lines
     Plug 'vim-airline/vim-airline'
 
-    " snippet completion
+    " Snippet completion
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'vim-scripts/tlib'
     Plug 'garbas/vim-snipmate'
     Plug 'honza/vim-snippets'
 
-    " multiple cursors
+    " Multiple cursors
     Plug 'terryma/vim-multiple-cursors'
 
-    " beautiful theme
+    " Beautiful theme
     Plug 'flazz/vim-colorschemes'
 
-    " syntax highlighting
+    " Syntax highlighting
     Plug 'sheerun/vim-polyglot'
 
-    " align element
+    " Align element
     Plug 'godlygeek/tabular'
     
-    " ctrl-p goto everywhere
+    " Ctrl-p goto everywhere
     Plug 'kien/ctrlp.vim'
 
-    " google indent
+    " Google indent
     Plug 'google/vim-maktaba'
     Plug 'google/vim-codefmt'
     Plug 'google/vim-glaive'
@@ -109,13 +110,13 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " Use Esc to go to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
 
-" don't use arrow key in normal mode
+" Don't use arrow key in normal mode
 noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
-" map nerdtree button (feel free to change)
+" Map nerdtree button (feel free to change)
 map <C-d> :NERDTreeToggle<CR>
 
 " map undotree button (feel free to change)
@@ -128,23 +129,23 @@ map <C-b> :BuffergatorToggle<cr>
 " configuration
 "----------------------------------
 
-" enable filetype plugin
+" Enable filetype plugin
 if has('autocmd')
   filetype plugin indent on
 endif
 
-" syntax highlighting
+" Syntax highlighting
 if has('syntax')
     syntax enable
 endif
 
-" theme
+" Theme
 silent! colorscheme molokai
 
 " hightlight the 80th column
 set colorcolumn=80
 
-" highline curent line number
+" Highline curent line number
 set cursorline
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
@@ -183,6 +184,7 @@ set laststatus=2
 
 " 1 tab == 2 spaces
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 
@@ -190,6 +192,10 @@ set expandtab
 set scrolloff=8
 set sidescroll=1
 set sidescrolloff=15
+
+" Navigate screen line instead of file line
+nnoremap j gj
+nnoremap k gk
 
 " airline-tabline
 let g:airline#extensions#tabline#enabled = 1
