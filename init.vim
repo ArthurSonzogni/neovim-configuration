@@ -3,7 +3,7 @@
 "----------------------------------
 
 "----------------------------------
-" Automaticly load pluings
+" Automatically load plugins
 "----------------------------------
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -61,8 +61,12 @@ call plug#begin('~/.vim/plugged')
     " use ctrl-f
     Plug 'mbbill/undotree'
 
-    " You complete me
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+    " Complete me
+    Plug 'justmao945/vim-clang'
+
+    " buffergator
+    Plug 'jeetsukumaran/vim-buffergator'
+
 
 call plug#end()
 
@@ -87,6 +91,9 @@ tnoremap <C-k> <C-\><C-n><C-w>j
 tnoremap <C-h> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
+" Use Esc to go to normal mode in terminal
+tnoremap <Esc> <C-\><C-n>
+
 " don't use arrow key in normal mode
 noremap <Up> <nop>
 noremap <Down> <nop>
@@ -97,7 +104,10 @@ noremap <Right> <nop>
 map <C-d> :NERDTreeToggle<CR>
 
 " map undotree button (feel free to change)
-map <C-f> :UndotreeToggle<cr>
+map <C-u> :UndotreeToggle<cr>
+
+" map Buffergator button (feel free to change)
+map <C-b> :BuffergatorToggle<cr>
 
 "----------------------------------
 " configuration
@@ -174,4 +184,3 @@ let g:airline_powerline_fonts = 1
 
 " custom file listing command
 let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'
-
