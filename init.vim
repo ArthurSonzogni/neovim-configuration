@@ -37,7 +37,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdcommenter'
 
     " alternate header/implementation :A
-    Plug 'vim-scripts/a.vim'
+    Plug 'vim-scripts/a.vim' , {'on' : 'A'}
 
     " beautiful status lines
     Plug 'vim-airline/vim-airline'
@@ -64,24 +64,22 @@ call plug#begin('~/.vim/plugged')
     Plug 'kien/ctrlp.vim'
 
     " google indent
+    " :FormatLines
     Plug 'google/vim-maktaba'
     Plug 'google/vim-codefmt'
     Plug 'google/vim-glaive'
 
     " Codi, python interactive scratchpad
     " :Codi to enable it
-    Plug 'metakirby5/codi.vim'
+    Plug 'metakirby5/codi.vim' , {'on': 'Codi'}
 
     " undotree vizualizer
-    " use ctrl-f
-    Plug 'mbbill/undotree'
-
-    " Complete me
-    Plug 'justmao945/vim-clang'
+    " use ctrl-u
+    Plug 'mbbill/undotree' , {'on': 'UndotreeToggle'}
 
     " buffergator
-    Plug 'jeetsukumaran/vim-buffergator'
-
+    " use ctrl-b
+    Plug 'jeetsukumaran/vim-buffergator' , {'on' : 'BuffergatorToggle'}
 
 call plug#end()
 
@@ -199,3 +197,12 @@ let g:airline_powerline_fonts = 1
 
 " custom file listing command
 let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'
+
+" Keep Buffergator window open after selecting a buffer
+let g:buffergator_autodismiss_on_select = 0
+
+" Update Buffergator window if buffer changes
+let g:buffergator_autoupdate = 1
+
+" Set how buffergator display its buffer
+let g:buffergator_show_full_directory_path = 0
