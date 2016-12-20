@@ -81,6 +81,16 @@ call plug#begin('~/.vim/plugged')
     " use ctrl-b
     Plug 'jeetsukumaran/vim-buffergator' , {'on' : 'BuffergatorToggle'}
 
+    " ctags
+    " See http://ricostacruz.com/til/navigate-code-with-ctags
+    " Ctrl + LeftMouseClick : goto definition.
+    " Ctrl + RightMouseClick : jump back.
+    " Ctrl + ] : goto definition
+    " Ctrl + T : Jump back from the definition
+    " You need to install ctags: 'sudo apt-get install exuberant-ctags'
+    " You need to create a tag file before being able to use it 'ctags -R'
+    Plug 'craigemery/vim-autotag'
+
 call plug#end()
 
 silent! call glaive#Install()
