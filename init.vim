@@ -123,14 +123,21 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
-" map nerdtree button (feel free to change)
+" map nerdtree button.
 map <C-d> :NERDTreeToggle<CR>
 
-" map undotree button (feel free to change)
+" map undotree button.
 map <C-u> :UndotreeToggle<cr>
 
-" map Buffergator button (feel free to change)
+" map Buffergator button.
 map <C-b> :BuffergatorToggle<cr>
+
+" Navigate into console error messages.
+nmap <F5> :cnext<CR>
+nmap <F6> :cprev<CR>
+
+" Use :FormatLines instead of the default vim formatter.
+vmap = :FormatLines<CR>
 
 "----------------------------------
 " configuration
@@ -216,3 +223,5 @@ let g:buffergator_autoupdate = 1
 
 " Set how buffergator display its buffer
 let g:buffergator_show_full_directory_path = 0
+
+let g:buffergator_viewport_split_policy = "R"
