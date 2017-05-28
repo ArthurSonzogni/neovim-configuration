@@ -20,9 +20,9 @@
 "----------------------------------
 " Automatically load plugins
 "----------------------------------
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -38,7 +38,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdcommenter'
 
     " Alternate header/implementation :A
-    Plug 'vim-scripts/a.vim'
+    Plug 'vim-scripts/a.vim' , {'on' : 'A'}
 
     " Beautiful status lines
     Plug 'vim-airline/vim-airline'
@@ -53,7 +53,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'terryma/vim-multiple-cursors'
 
     " Beautiful theme
-    Plug 'flazz/vim-colorschemes'
+    Plug 'flazz/vim-colorschemes', { 'do': ':colorscheme molokai'}
 
     " Syntax highlighting
     Plug 'sheerun/vim-polyglot'
@@ -65,24 +65,32 @@ call plug#begin('~/.vim/plugged')
     Plug 'kien/ctrlp.vim'
 
     " Google indent
+    " :FormatLines
     Plug 'google/vim-maktaba'
     Plug 'google/vim-codefmt'
     Plug 'google/vim-glaive'
 
     " Codi, python interactive scratchpad
     " :Codi to enable it
-    Plug 'metakirby5/codi.vim'
+    Plug 'metakirby5/codi.vim' , {'on': 'Codi'}
 
     " undotree vizualizer
-    " use ctrl-f
-    Plug 'mbbill/undotree'
-
-    " Complete me
-    Plug 'justmao945/vim-clang'
+    " use ctrl-u
+    Plug 'mbbill/undotree' , {'on': 'UndotreeToggle'}
 
     " buffergator
-    Plug 'jeetsukumaran/vim-buffergator'
+    " use ctrl-b
+    Plug 'jeetsukumaran/vim-buffergator' , {'on' : 'BuffergatorToggle'}
 
+    " ctags
+    " See http://ricostacruz.com/til/navigate-code-with-ctags
+    " Ctrl + LeftMouseClick : goto definition.
+    " Ctrl + RightMouseClick : jump back.
+    " Ctrl + ] : goto definition
+    " Ctrl + T : Jump back from the definition
+    " You need to install ctags: 'sudo apt-get install exuberant-ctags'
+    " You need to create a tag file before being able to use it 'ctags -R'
+    Plug 'craigemery/vim-autotag'
 
 call plug#end()
 
@@ -119,11 +127,18 @@ noremap <Right> <nop>
 " Map nerdtree button (feel free to change)
 map <C-d> :NERDTreeToggle<CR>
 
-" map undotree button (feel free to change)
+" map undotree button.
 map <C-u> :UndotreeToggle<cr>
 
-" map Buffergator button (feel free to change)
+" map Buffergator button.
 map <C-b> :BuffergatorToggle<cr>
+
+" Navigate into console error messages.
+nmap <F5> :cnext<CR>
+nmap <F6> :cprev<CR>
+
+" Use :FormatLines instead of the default vim formatter.
+vmap = :FormatLines<CR>
 
 "----------------------------------
 " configuration
@@ -205,3 +220,14 @@ let g:airline_powerline_fonts = 1
 
 " custom file listing command
 let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'
+
+" Keep Buffergator window open after selecting a buffer
+let g:buffergator_autodismiss_on_select = 0
+
+" Update Buffergator window if buffer changes
+let g:buffergator_autoupdate = 1
+
+" Set how buffergator display its buffer
+let g:buffergator_show_full_directory_path = 0
+
+let g:buffergator_viewport_split_policy = "R"
