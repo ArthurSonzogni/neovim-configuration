@@ -138,7 +138,8 @@ nmap <F5> :cnext<CR>
 nmap <F6> :cprev<CR>
 
 " Use :FormatLines instead of the default vim formatter.
-vmap = :FormatLines<CR>
+autocmd FileType c vmap = :FormatLines<CR>
+autocmd FileType cpp vmap = :FormatLines<CR>
 
 "----------------------------------
 " configuration
