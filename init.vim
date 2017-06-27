@@ -245,3 +245,6 @@ let g:buffergator_viewport_split_policy = "R"
 " YouCompleteMe configuration
 " Use chrome config.    
 let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
+
+" vim draw: define visual selection beyond the end of the line.
+set virtualedit+=block
