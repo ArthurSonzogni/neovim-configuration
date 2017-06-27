@@ -90,7 +90,13 @@ call plug#begin('~/.vim/plugged')
     " Ctrl + T : Jump back from the definition
     " You need to install ctags: 'sudo apt-get install exuberant-ctags'
     " You need to create a tag file before being able to use it 'ctags -R'
-    Plug 'craigemery/vim-autotag'
+    "Plug 'craigemery/vim-autotag'
+    Plug 'Valloric/YouCompleteMe'
+
+    " Simply move the cursor to the start position, hit CTRL-V to enter
+    " blockwise Visual mode and move the cursor to define the rectangle or
+    " line. Finally, type <leader>d to draw the rectangle or line.
+    Plug 'vim-scripts/draw.vim'
 
 call plug#end()
 
@@ -178,6 +184,9 @@ set wildignore=*.o,*~
 " Always show current position
 set ruler
 
+" Show a complete menu
+set completeopt=longest,menuone
+
 " don't annoy with case
 set ignorecase
 set smartcase
@@ -232,3 +241,7 @@ let g:buffergator_autoupdate = 1
 let g:buffergator_show_full_directory_path = 0
 
 let g:buffergator_viewport_split_policy = "R"
+
+" YouCompleteMe configuration
+" Use chrome config.    
+let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
