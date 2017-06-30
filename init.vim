@@ -108,18 +108,32 @@ silent! call glaive#Install()
 " visual shifting (can repeat shifting)
 vnoremap < <gv
 vnoremap > >gv
-
-" Smart way to move between windows
+"┌─────────────────────────┐
+"│  Move between windows   │
+"└─────────────────────────┘
+" Select another window (normal mode)
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" The same command when entering in terminal 
+" Move the current window (normal mode)
+map <C-A-j> <C-W>J
+map <C-A-k> <C-W>K
+map <C-A-h> <C-W>H
+map <C-A-l> <C-W>L
+
+" Select window (terminal mode)
 tnoremap <C-j> <C-\><C-n><C-w>h
 tnoremap <C-k> <C-\><C-n><C-w>j
 tnoremap <C-h> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
+
+" Move the current window (terminal mode)
+tnoremap <C-A-j> <C-\><C-n><C-w>H
+tnoremap <C-A-k> <C-\><C-n><C-w>J
+tnoremap <C-A-h> <C-\><C-n><C-w>K
+tnoremap <C-A-l> <C-\><C-n><C-w>L
 
 " Use Esc to go to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
