@@ -1,5 +1,5 @@
 "--------------------------------------------------
-"
+"                _   _
 "     /\        | | | |                      
 "    /  \   _ __| |_| |__  _   _ _ __        
 "   / /\ \ | '__| __| '_ \| | | | '__|       
@@ -9,7 +9,7 @@
 "    \___ \ / _ \| '_ \|_  / _ \ / _` | '_ \| |
 "    ____) | (_) | | | |/ / (_) | (_| | | | | |
 "   |_____/ \___/|_| |_/___\___/ \__, |_| |_|_|
-"                                __/ |        
+"                                __/ /
 "                               |___/        
 "
 "--------------------------------------------------
@@ -61,9 +61,6 @@ call plug#begin('~/.vim/plugged')
     " Align element
     Plug 'godlygeek/tabular'
     
-    " Ctrl-p goto everywhere
-    Plug 'kien/ctrlp.vim'
-
     " Google indent
     " :FormatLines
     Plug 'google/vim-maktaba'
@@ -82,35 +79,39 @@ call plug#begin('~/.vim/plugged')
     " use ctrl-b
     Plug 'jeetsukumaran/vim-buffergator' , {'on' : 'BuffergatorToggle'}
 
-    " ctags
-    " See http://ricostacruz.com/til/navigate-code-with-ctags
-    " Ctrl + LeftMouseClick : goto definition.
-    " Ctrl + RightMouseClick : jump back.
-    " Ctrl + ] : goto definition
-    " Ctrl + T : Jump back from the definition
-    " You need to install ctags: 'sudo apt-get install exuberant-ctags'
-    " You need to create a tag file before being able to use it 'ctags -R'
-    "Plug 'craigemery/vim-autotag'
-    Plug 'Valloric/YouCompleteMe'
-
     " Simply move the cursor to the start position, hit CTRL-V to enter
     " blockwise Visual mode and move the cursor to define the rectangle or
     " line. Finally, type <leader>d to draw the rectangle or line.
     Plug 'vim-scripts/draw.vim'
 
+    " Vim git gutter.
+    Plug 'airblade/vim-gitgutter'
+
+    "------------------
+    " Unused plugins
+    "------------------
+
+    " YouCompleteMe
+    "Plug 'Valloric/YouCompleteMe'
+
+    " Ctrl-p goto everywhere
+    "Plug 'kien/ctrlp.vim'
+
+
 call plug#end()
 
 silent! call glaive#Install()
 
-"----------------------------------
-" Key mapping
-"----------------------------------
+"┌─────────────────────────────────────────────────────────────────────────────┐
+"│ Key mapping                                                                 │
+"└─────────────────────────────────────────────────────────────────────────────┘
 " visual shifting (can repeat shifting)
 vnoremap < <gv
 vnoremap > >gv
-"┌─────────────────────────┐
-"│  Move between windows   │
-"└─────────────────────────┘
+
+"┌─────────────────────────────────────────────────────────────────────────────┐
+"│  Move between windows                                                       │
+"└─────────────────────────────────────────────────────────────────────────────┘
 " Select another window (normal mode)
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -160,10 +161,12 @@ nmap <F6> :cprev<CR>
 " Use :FormatLines instead of the default vim formatter.
 autocmd FileType c vmap = :FormatLines<CR>
 autocmd FileType cpp vmap = :FormatLines<CR>
+autocmd FileType h vmap = :FormatLines<CR>
+autocmd FileType hpp vmap = :FormatLines<CR>
 
-"----------------------------------
-" configuration
-"----------------------------------
+"┌─────────────────────────────────────────────────────────────────────────────┐
+"│  Configuration                                                              │
+"└─────────────────────────────────────────────────────────────────────────────┘
 
 " Enable filetype plugin
 if has('autocmd')
@@ -188,9 +191,6 @@ set cursorline
 set nobackup
 set nowb
 set noswapfile
-
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
 
 " Ignore compiled files
 set wildignore=*.o,*~
@@ -222,10 +222,13 @@ set number
 set laststatus=2
 
 " 1 tab == 2 spaces
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
 set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+set textwidth=80
+set wrap
 
 " define scroll margin
 set scrolloff=8
@@ -235,6 +238,9 @@ set sidescrolloff=15
 " Navigate screen line instead of file line
 nnoremap j gj
 nnoremap k gk
+
+" Enable use of the mouse
+set mouse=a
 
 " airline-tabline
 let g:airline#extensions#tabline#enabled = 1
@@ -262,3 +268,5 @@ let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
 
 " vim draw: define visual selection beyond the end of the line.
 set virtualedit+=block
+
+set guicursor=
