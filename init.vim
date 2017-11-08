@@ -4,18 +4,18 @@
 "                                 ~Arthur Sonzogni
 "--------------------------------------------------
 
-"----------------------------------
+"-------------------------------------------------------------------------------
 " Automatically load plugins
-"----------------------------------
+"-------------------------------------------------------------------------------
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-"----------------------------------
+"-------------------------------------------------------------------------------
 " Plugins
-"----------------------------------
+"-------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
     " File explorer
@@ -96,9 +96,6 @@ silent! call glaive#Install()
 vnoremap < <gv
 vnoremap > >gv
 
-"-------------------------------------------------------------------------------
-" Move between windows
-"-------------------------------------------------------------------------------
 " Select another window (normal mode)
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -132,15 +129,6 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
-" Map nerdtree button (feel free to change)
-map <C-d> :NERDTreeToggle<CR>
-
-" map undotree button.
-map <C-u> :UndotreeToggle<cr>
-
-" map Buffergator button.
-map <C-b> :BuffergatorToggle<cr>
-
 " Navigate into console error messages.
 nmap <F5> :cnext<CR>
 nmap <F6> :cprev<CR>
@@ -150,6 +138,21 @@ autocmd FileType c vmap = :FormatLines<CR>
 autocmd FileType cpp vmap = :FormatLines<CR>
 autocmd FileType h vmap = :FormatLines<CR>
 autocmd FileType hpp vmap = :FormatLines<CR>
+
+"---------------
+" NerdTree
+"---------------
+map <C-d> :NERDTreeToggle<CR>
+
+"---------------
+" UndoTree
+"---------------
+map <C-u> :UndotreeToggle<cr>
+
+"---------------
+" BufferGator
+"---------------
+map <C-b> :BuffergatorToggle<cr>
 
 "-------------------------------------------------------------------------------
 " Configuration
@@ -229,15 +232,20 @@ nnoremap k gk
 " Enable use of the mouse
 set mouse=a
 
-" airline-tabline
-let g:airline#extensions#tabline#enabled = 1
+" vim draw: define visual selection beyond the end of the line.
+set virtualedit+=block
 
-" airline symbols
+set guicursor=
+
+"---------------
+" airline
+"---------------
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" custom file listing command
-let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'
-
+"---------------
+" buffergator
+"---------------
 " Keep Buffergator window open after selecting a buffer
 let g:buffergator_autodismiss_on_select = 0
 
@@ -249,11 +257,14 @@ let g:buffergator_show_full_directory_path = 0
 
 let g:buffergator_viewport_split_policy = "R"
 
-" YouCompleteMe configuration
+"---------------
+" Ctrl--P
+"---------------
+" custom file listing command
+let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name "*.cpp"'
+
+"---------------
+" YouCompleteMe
+"---------------
 " Use chrome config.    
 let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
-
-" vim draw: define visual selection beyond the end of the line.
-set virtualedit+=block
-
-set guicursor=
