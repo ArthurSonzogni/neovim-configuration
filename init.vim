@@ -74,6 +74,9 @@ call plug#begin('~/.vim/plugged')
     " Vim git gutter.
     Plug 'airblade/vim-gitgutter'
 
+    " A useful home screen
+    Plug 'mhinz/vim-startify'
+
     "------------------
     " Unused plugins
     "------------------
@@ -214,7 +217,6 @@ set laststatus=2
 " 1 tab == 2 spaces
 set expandtab
 set shiftwidth=2
-set softtabstop=2
 set tabstop=2
 
 set textwidth=80
@@ -255,6 +257,7 @@ let g:buffergator_autoupdate = 1
 " Set how buffergator display its buffer
 let g:buffergator_show_full_directory_path = 0
 
+" Display buffers on the right.
 let g:buffergator_viewport_split_policy = "R"
 
 "---------------
