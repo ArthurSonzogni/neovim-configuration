@@ -3,6 +3,12 @@
 " Feel free to take parts you like.
 "                                 ~Arthur Sonzogni
 "--------------------------------------------------
+" For supporting the Deoplete plugin, you need python3 support:
+" ```
+" sudo apt-get install neovim
+" sudo apt-get install python3-pip
+" pip3 install --user pynvim
+" ```
 
 "-------------------------------------------------------------------------------
 " Automatically load plugins
@@ -76,6 +82,10 @@ call plug#begin('~/.vim/plugged')
 
     " A useful home screen
     Plug 'mhinz/vim-startify'
+
+    " Code completion.
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 
     "------------------
     " Unused plugins
@@ -271,3 +281,8 @@ let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name
 "---------------
 " Use chrome config.    
 let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
+
+"---------
+" Deoplete
+"---------
+let g:deoplete#enable_at_startup = 1
