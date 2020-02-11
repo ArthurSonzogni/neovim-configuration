@@ -143,6 +143,7 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 " Navigate into console error messages.
+nmap <F1> :make<CR>
 nmap <F5> :cnext<CR>
 nmap <F6> :cprev<CR>
 
@@ -286,3 +287,5 @@ let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
 " Deoplete
 "---------
 let g:deoplete#enable_at_startup = 1
+
+autocmd BufNewFile,BufRead *.mojom set syntax=cpp
