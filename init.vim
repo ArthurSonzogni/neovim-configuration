@@ -43,7 +43,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'honza/vim-snippets'
 
     " Multiple cursors
-    Plug 'terryma/vim-multiple-cursors'
+    "Plug 'terryma/vim-multiple-cursors'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 
     " Beautiful theme
     Plug 'flazz/vim-colorschemes', { 'do': ':colorscheme molokai'}
