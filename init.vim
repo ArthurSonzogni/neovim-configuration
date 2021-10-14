@@ -88,6 +88,9 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'mzlogin/vim-markdown-toc'
 
+    " Diagon
+    Plug 'willchao612/vim-diagon'
+
     "------------------
     " Unused plugins
     "------------------
