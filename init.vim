@@ -38,7 +38,7 @@ call plug#begin('~/.vim/plugged')
 
     " Snippet completion
     Plug 'MarcWeber/vim-addon-mw-utils'
-    Plug 'vim-scripts/tlib'
+    Plug 'tomtom/tlib_vim'
     Plug 'garbas/vim-snipmate'
     Plug 'honza/vim-snippets'
 
@@ -289,6 +289,11 @@ let g:ctrlp_user_command = 'find %s -type f -name "*.cc" -o -name "*.h" -o -name
 "---------------
 " Use chrome config.    
 let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
+
+"---------------
+" SnipMate
+"---------------
+let g:snipMate = { 'snippet_version' : 1 }
 
 "---------
 " Deoplete
