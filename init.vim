@@ -84,7 +84,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'mhinz/vim-startify'
 
     " Code completion.
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
     Plug 'mzlogin/vim-markdown-toc'
 
@@ -254,6 +254,9 @@ set virtualedit+=block
 
 set guicursor=
 
+" https://www.cultofpedagogy.com/two-spaces-after-period/
+set nojoinspaces
+
 "---------------
 " airline
 "---------------
@@ -293,3 +296,6 @@ let g:ycm_global_ycm_extra_conf = $HOME."/chromium/.ycm_extra_conf.py"
 let g:deoplete#enable_at_startup = 1
 
 autocmd BufNewFile,BufRead *.mojom set syntax=cpp
+
+au BufRead,BufNewFile *.cc set filetype=cpp
+
