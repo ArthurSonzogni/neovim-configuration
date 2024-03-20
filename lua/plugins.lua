@@ -19,7 +19,8 @@ require("lazy").setup({
     "scrooloose/nerdcommenter",
 
     -- Alternate header/implementation :A
-    "vim-scripts/a.vim",
+    { "vim-scripts/a.vim", cmd = "A"},
+
     -- Beautiful status lines
     "vim-airline/vim-airline",
 
@@ -33,7 +34,7 @@ require("lazy").setup({
     "sheerun/vim-polyglot",
 
     -- Align element
-    "godlygeek/tabular",
+    { "godlygeek/tabular", cmd = "Tabularize"},
 
     -- Google indent
     --"google/vim-maktaba",
@@ -43,10 +44,12 @@ require("lazy").setup({
     -- undotree vizualizer
     -- use ctrl-u
     {
-        "mbbill/undotree",
-        init = function()
-            vim.keymap.set("n", "<C-u>", ":UndotreeToggle<CR>", {})
-        end,
+        "jiaoshijie/undotree",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = true,
+        keys = {
+            { "U", "<cmd>lua require('undotree').toggle()<cr>" },
+        },
     },
 
     -- buffergator

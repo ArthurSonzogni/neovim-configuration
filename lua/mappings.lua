@@ -8,7 +8,7 @@ end
 
 -- Navigate screen line instead of file line
 Map("n", "j", "gj")
-Map("n", "jk", "gk")
+Map("n", "k", "gk")
 
 -- visual shifting (can repeat shifting)
 Map("v", "<", "<gv")
