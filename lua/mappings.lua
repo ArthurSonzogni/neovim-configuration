@@ -53,13 +53,7 @@ Map("n", "<F5>", ":cnext<CR>")
 Map("n", "<F6>", ":cprev<CR>")
 
 -- Use :FormatLines instead of the default vim formatter.
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {".c", ".cpp", ".h", ".hpp"},
-  callback =
-  function()
-    Map("v", "=", ":FormatLines<CR>")
-  end
-})
+Map("v", "=", ":FormatLines<CR>")
 
 -----------------
 -- NerdTree
