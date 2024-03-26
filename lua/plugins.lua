@@ -37,9 +37,18 @@ require("lazy").setup({
     { "godlygeek/tabular", cmd = "Tabularize"},
 
     -- Google indent
-    --"google/vim-maktaba",
-    --"google/vim-codefmt",
-    --"google/vim-glaive",
+    {
+        'google/vim-codefmt',
+        dependencies = {
+            'google/vim-maktaba',
+            {
+                'google/vim-glaive',
+                config = function()
+                    vim.cmd('call glaive#Install()')
+                end
+            },
+        },
+    },
 
     -- undotree vizualizer
     -- use ctrl-u
@@ -111,3 +120,8 @@ require("lazy").setup({
         },
     },
 })
+
+vim.cmd("call glaive#Install()")
+--Glaive codefmt plugin[mappings]
+--Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+
