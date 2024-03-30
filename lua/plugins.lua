@@ -97,7 +97,6 @@ require("lazy").setup({
                     "c",
                     "lua",
                     "vim",
-                    "vimdoc",
                     "query",
                     "javascript",
                     "html",
