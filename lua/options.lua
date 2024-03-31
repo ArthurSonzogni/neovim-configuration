@@ -4,6 +4,7 @@ vim.cmd("syntax enable")
 
 -- Theme
 vim.cmd("silent! colorscheme molokai")
+vim.opt.termguicolors = true
 
 -- hightlight the 80th column
 vim.opt.colorcolumn = "80"

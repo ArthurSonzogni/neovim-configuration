@@ -51,17 +51,3 @@ Map("n", "<Right>", "<nop>")
 Map("n", "<F1>", ":make<CR>")
 Map("n", "<F5>", ":cnext<CR>")
 Map("n", "<F6>", ":cprev<CR>")
-
--- Use :FormatLines instead of the default vim formatter.
-Map("v", "=", ":FormatLines<CR>")
-
------------------
--- NerdTree
------------------
-Map("", "<C-d>", ":NERDTreeToggle<CR>")
-
------------------
--- BufferGator
------------------
-Map("n", "<C-b>", ":BuffergatorToggle<cr>")
-
