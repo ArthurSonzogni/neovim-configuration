@@ -6,13 +6,15 @@ vim.cmd("syntax enable")
 vim.cmd("silent! colorscheme molokai")
 vim.opt.termguicolors = true
 
--- hightlight the 80th column
+-- nightlight the 80Th column
+vim.opt.textwidth = 80
 vim.opt.colorcolumn = "80"
+vim.opt.wrap = false
 
--- Highline curent line number
+-- Highlight current line number
 vim.opt.cursorline = true
 
--- Turn backup off, since most stuff is in SVN, git et.c anyway...
+-- Turn backup off, since most stuff is in SVN, git etc anyway...
 vim.opt.backup = false
 vim.opt.wb = false
 vim.opt.swapfile = false
@@ -51,6 +53,7 @@ vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 
 vim.opt.textwidth = 80
 vim.opt.wrap = true
@@ -62,3 +65,7 @@ vim.opt.sidescrolloff = 15
 
 -- Mouse
 vim.opt.mouse = "a"
+
+-- Enable spell checking
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
