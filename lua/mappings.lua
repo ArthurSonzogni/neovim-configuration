@@ -51,3 +51,5 @@ Map("n", "<Right>", "<nop>")
 Map("n", "<F1>", ":make<CR>")
 Map("n", "<F5>", ":cnext<CR>")
 Map("n", "<F6>", ":cprev<CR>")
+Map("n", "<F8>", ":vertical wincmd f<CR>")
+
