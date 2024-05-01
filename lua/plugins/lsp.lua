@@ -39,8 +39,7 @@ return {
             "jsonls",
             "markdown_oxide",
             "pyright",
-            "vuels",
-            "vuels",
+            "volar",
           },
           handlers = {
             function(server_name)
