@@ -1,7 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
+    branch = 'v4.x',
     dependencies = {
       'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
@@ -12,10 +12,36 @@ return {
       { 'lukas-reineke/lsp-format.nvim', config = true}
     },
     config = function()
+      local lsp_zero = require('lsp-zero')
       local lsp_format = require('lsp-format')
       local cmp_nvim_lsp = require('cmp_nvim_lsp')
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
 
-      local lsp_zero = require('lsp-zero')
+      -- See :help lsp-zero-keybindings to learn the available actions:
+      local lsp_attach = function(client, bufnr)
+        lsp_zero.default_keymaps({buffer = bufnr})
+      end
+
+      lsp_zero.extend_lspconfig({
+        capabilities = cpm_nvim_lsp.default_capabilities(),
+        lsp_attach = lsp_attach,
+        float_border = 'rounded',
+        sign_text = true,
+      })
+
+      cmp.setup({
+        sources = {
+          {name = 'nvim_lsp'},
+        },
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({}),
+      })
+
       lsp_zero.preset("recommended")
       lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.default_keymaps({buffer = bufnr})
