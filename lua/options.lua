@@ -2,10 +2,6 @@
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 
--- Theme
-vim.cmd("silent! colorscheme molokai")
-vim.opt.termguicolors = true
-
 -- nightlight the 80Th column
 vim.opt.textwidth = 80
 vim.opt.colorcolumn = "80"

@@ -1,63 +1,28 @@
 return {
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v4.x',
+    'neovim/nvim-lspconfig',
     dependencies = {
-      'neovim/nvim-lspconfig',
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip',
+      'hrsh7th/nvim-cmp',
+      'williamboman/mason-lspconfig.nvim',
+      'williamboman/mason.nvim',
       { 'lukas-reineke/lsp-format.nvim', config = true}
     },
     config = function()
-      local lsp_zero = require('lsp-zero')
-      local lsp_format = require('lsp-format')
-      local cmp_nvim_lsp = require('cmp_nvim_lsp')
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-
-      -- See :help lsp-zero-keybindings to learn the available actions:
-      local lsp_attach = function(client, bufnr)
-        lsp_zero.default_keymaps({buffer = bufnr})
-      end
-
-      lsp_zero.extend_lspconfig({
-        capabilities = cpm_nvim_lsp.default_capabilities(),
-        lsp_attach = lsp_attach,
-        float_border = 'rounded',
-        sign_text = true,
-      })
-
-      cmp.setup({
-        sources = {
-          {name = 'nvim_lsp'},
-        },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({}),
-      })
-
-      lsp_zero.preset("recommended")
-      lsp_zero.on_attach(function(client, bufnr)
-        lsp_zero.default_keymaps({buffer = bufnr})
-        lsp_format.on_attach(client, bufnr)
-      end)
-
-      local lsp_config = require('lspconfig')
+      -- Mason is a Neovim plugin that allows you to easily manage external
+      -- editor tooling such as LSP servers, DAP servers, linters, and
+      -- formatters through a single interface.
       local mason = require('mason')
       mason.setup({})
 
+      -- Mason LSP Config is a Neovim plugin that provides a simple interface
+      -- for setting up LSP servers using the lspconfig plugin.
       local mason_lspconfig = require('mason-lspconfig')
       mason_lspconfig.setup({
           ensure_installed = {
             "autotools_ls",
-            "clangd",
             "cmake",
+            "clangd",
             "cssls",
             "dockerls",
             "glslls",
@@ -67,26 +32,47 @@ return {
             "pyright",
             "volar",
           },
-          handlers = {
-            function(server_name)
-              lsp_config[server_name].setup({
-                  on_attach = on_attach,
-                  capabilities = cmp_nvim_lsp.default_capabilities(),
-              })
-            end,
+        })
 
-            clangd = function()
-              lsp_config.clangd.setup({
-                  on_attach = on_attach,
-                  capabilities = cmp_nvim_lsp.default_capabilities(),
-                  cmd = {
-                    "clangd",
-                    "--offset-encoding=utf-16",
-                  },
-              })
+      -- Reserve a space in the gutter
+      vim.opt.signcolumn = 'yes'
+
+      local lsp_config = require('lspconfig')
+
+      -- Add cmp_nvim_lsp capabilities settings to lspconfig
+      -- This should be executed before you configure any language server
+      local cmp_nvim_lsp = require('cmp_nvim_lsp')
+      lsp_config.util.default_config.capabilities = vim.tbl_deep_extend(
+        'force',
+        lsp_config.util.default_config.capabilities,
+        cmp_nvim_lsp.default_capabilities()
+      )
+
+      lsp_config.clangd.setup({})
+      lsp_config.cmake.setup({})
+      lsp_config.cssls.setup({})
+      lsp_config.dockerls.setup({})
+      lsp_config.glslls.setup({})
+      lsp_config.html.setup({})
+      lsp_config.jsonls.setup({})
+      lsp_config.markdown_oxide.setup({})
+      lsp_config.pyright.setup({})
+      lsp_config.volar.setup({})
+
+      local cmp = require('cmp')
+      cmp.setup({
+          sources = {
+            {name = 'nvim_lsp'},
+          },
+          snippet = {
+            expand = function(args)
+              -- You need Neovim v0.10 to use vim.snippet
+              vim.snippet.expand(args.body)
             end,
           },
-      })
+          mapping = cmp.mapping.preset.insert({}),
+        })
+
     end,
   },
 }

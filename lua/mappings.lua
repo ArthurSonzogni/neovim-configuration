@@ -53,3 +53,21 @@ Map("n", "<F5>", ":cnext<CR>")
 Map("n", "<F6>", ":cprev<CR>")
 Map("n", "<F8>", ":vertical wincmd f<CR>")
 
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function(event)
+    local opts = {buffer = event.buf}
+
+    Map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    Map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    Map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+    Map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+    Map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+    Map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+    Map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+    Map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    Map({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    Map('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  end
+})
+
